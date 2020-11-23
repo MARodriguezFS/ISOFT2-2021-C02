@@ -1,58 +1,31 @@
 package dominio;
+import persistencia.Camarero;
+
+import java.util.LinkedList;
+
+/**
+ * Esta clase utiliza la clase Camarero para poder realizar sus funcionalidades.
+ * 
+ * @author Miguel Ángel Rodríguez Fernández de Simón
+ * @version 0.1.0
+ * @see Camarero, EstadosMesas
+ * @since 0.1.0
+ */
 
 public class GestorCamarero implements EstadosMesas{
 	
+	/**
+	 * Constructor vacío para utilizar el gestor.
+	 */
 	public GestorCamarero() {
 	}
 	
-	public static void preparar_mesa(int id_mesa) throws MesaNoExisteException{
-		Mesa mesa = new Mesa(id_mesa);
-		mesa.cambiarEstado(PREPARACION);
+	/**
+	 * Este método devuelve una lista con todos los camareros.
+	 * @return
+	 * @throws Exception
+	 */
+	public static LinkedList<Camarero> get_lista_camareros() throws Exception{
+		return Camarero.get_lista_camareros();
 	}
-	
-	public static void servir_mesa(int id_mesa) throws MesaNoExisteException{
-		Mesa mesa = new Mesa(id_mesa);
-		mesa.cambiarEstado(SERVIDA);
-	}
-	
-	public static void cobrar(int id_mesa) throws MesaNoExisteException{
-		//TODO
-	}
-	
-	public void recoger_comanda(int id_mesa) {
-		//TODO
-	}
-	public static boolean autenticar(String login, String password) throws Exception{
-		boolean autenticado = false;
-		Usuario u = new Usuario(login, password);
-		if(u.read(login, password) != null)
-			autenticado = true;
-		return autenticado;
-	}
-
-	public static boolean nuevoUsuario(String login, String password) throws Exception{
-		boolean insertado = false;
-		Usuario u = new Usuario(login, password);
-		if(u.insert(login, password) ==1)
-			insertado = true;
-		return insertado;		
-	}
-
-	public static boolean eliminarUsuario(String login, String password) throws Exception{
-		boolean eliminado = false;
-		Usuario u = new Usuario(login, password);
-		if(u.delete(login, password) ==1)
-			eliminado = true;
-		return eliminado;		
-	}
-	
-	public static boolean cambiarPass(String login, String password, String newPassword) throws Exception{
-		boolean cambiado = false;
-		Usuario u = new Usuario(login, password);
-		if(u.cambiarPass(newPassword) ==1)
-			cambiado = true;
-		return cambiado;		
-	}
-	
-
 }

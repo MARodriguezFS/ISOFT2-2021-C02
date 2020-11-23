@@ -4,7 +4,6 @@ package dominio;
  * 
  * @author Miguel Ángel Rodríguez Fernández de Simón
  * @version 0.1.0
- * @see GestorCamarero
  * @since 0.1.0
  */
 

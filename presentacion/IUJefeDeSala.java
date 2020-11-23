@@ -14,6 +14,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.util.LinkedList;
+import dominio.GestorMesa;
+import dominio.GestorCamarero;
+import persistencia.Mesa;
+import persistencia.Camarero;
 
 public class IUJefeDeSala{
 
@@ -52,6 +56,13 @@ public class IUJefeDeSala{
 		lista_mesas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		lista_mesas.setBounds(0, 0, 241, 739);
 		frame.getContentPane().add(lista_mesas);
+		GestorMesa gestor_mesa = new GestorMesa();
+		try {
+			LinkedList<Mesa> lista_mesas_BD = gestor_mesa.getListaMesas();
+			modelo.addAll(lista_mesas_BD);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		btnReservarMesa = new JButton("Reservar mesa");
 		btnReservarMesa.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -71,5 +82,14 @@ public class IUJefeDeSala{
 		comboBox_camareros = new JComboBox();
 		comboBox_camareros.setBounds(489, 173, 175, 32);
 		frame.getContentPane().add(comboBox_camareros);
+		GestorCamarero gestor_camarero = new GestorCamarero();
+		try {
+			LinkedList<Camarero> lista_camareros_BD = gestor_camarero.get_lista_camareros();
+			while(!lista_camareros_BD.isEmpty()) {
+				comboBox_camareros.addItem(lista_camareros_BD.poll().get_id());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
