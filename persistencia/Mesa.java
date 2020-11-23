@@ -49,19 +49,28 @@ public class Mesa {
 		AgenteBD agente = AgenteBD.getSingletonInstance();
 		String l,g;
 		Mesa mesa = null;
-		LinkedList<Object> aux = null;
 		LinkedList<Mesa> listaMesas = new LinkedList<Mesa>();
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		LinkedList<Object> vectoradevolver=new LinkedList<Object>();
+		LinkedList<Object> vectorADevolver=new LinkedList<Object>();
 		String SQL_Consulta = "SELECT * FROM Mesa;";
-		vectoradevolver = agente.read(SQL_Consulta,aux,vectoradevolver, 3);
-		aux = new LinkedList<Object>();
-		while (vectoradevolver.size() >= 1){
-			aux = (LinkedList<Object>) vectoradevolver.poll();
-			mesa = new Mesa((int) aux.get(0), (int) aux.get(1),(String) aux.get(2));
+		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 3);
+		for(int i =0;i<vectorADevolver.size();i+=3) {
+			mesa = new Mesa((int) vectorADevolver.get(i), (int) vectorADevolver.get(i+1),(String) vectorADevolver.get(i+2));
 			listaMesas.add(mesa);
 		}
 		return listaMesas;
+	}
+
+	public int getmIdCamarero() {
+		return mIdCamarero;
+	}
+
+	public void setmIdCamarero(int mIdCamarero) {
+		this.mIdCamarero = mIdCamarero;
+	}
+
+	public int getmId() {
+		return mId;
 	}
 
 	/**
@@ -71,7 +80,7 @@ public class Mesa {
 	 */
 	public int insert() throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		String consulta = "INSERT INTO Mesa VALUES('"+this.mEstado+"')";
 		int res=agente.insert(consulta);
 		return res;
@@ -83,7 +92,7 @@ public class Mesa {
 	 */
 	public int delete() throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		String consulta = ("DELETE FROM Mesa WHERE ('"+this.mId+"'=id);");
 		int res=agente.delete(consulta);
 		return res;
@@ -96,7 +105,7 @@ public class Mesa {
 	 */
 	public int cambiarEstado(String estado) throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		String consulta = ("UPDATE Mesa SET estado='"+estado+"' WHERE id='"+this.mId+"';");
 		int res=AgenteBD.update(consulta);
 		return res;
@@ -109,8 +118,8 @@ public class Mesa {
 	 */
 	public int cambiarCamarero(int idCamarero) throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		Class.forName("com.mysql.jdbc.Driver");
-		String consulta = ("UPDATE Mesa SET camarero='"+idCamarero+"' WHERE id='"+this.mId+"';");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		String consulta = ("UPDATE Mesa SET idCamarero='"+idCamarero+"' WHERE idMesa='"+this.mId+"';");
 		int res=AgenteBD.update(consulta);
 		return res;
 	}

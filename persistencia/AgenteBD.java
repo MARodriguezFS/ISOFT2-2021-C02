@@ -61,17 +61,15 @@ public class AgenteBD implements BDConstantes {
 	 * @return
 	 * @throws Exception
 	 */
-	public static LinkedList<Object> read(String SQL_Consulta,LinkedList<Object> aux,LinkedList<Object> vectoradevolver, int numero_variables) throws Exception{
+	public static LinkedList<Object> read(String SQL_Consulta,LinkedList<Object> vectoradevolver, int numero_variables) throws Exception{
 		
 		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);	
 		Statement stmt = mBD.createStatement();
 		ResultSet res = stmt.executeQuery(SQL_Consulta);
-		aux=new LinkedList<Object>();
 		while (res.next()) {
 			for (int i=1; i<=numero_variables; i++) {
-				aux.add(res.getObject(i));
+				vectoradevolver.add(res.getObject(i));
 			}
-			vectoradevolver.add(aux);
 		}
 		stmt.close();
 		mBD.close();
@@ -86,7 +84,7 @@ public class AgenteBD implements BDConstantes {
 	 */
 	public static int insert(String accion) throws Exception{
 		int i;
-		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING+"?user="+BDConstantes.DBUSER+"&password="+BDConstantes.DBPASS);
+		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);
 		PreparedStatement stmt = mBD.prepareStatement(accion);
 		i=stmt.executeUpdate();
 		stmt.close();
@@ -102,7 +100,7 @@ public class AgenteBD implements BDConstantes {
 	 */
 	public static int delete(String accion) throws Exception{
 		int i;
-		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING+"?user="+BDConstantes.DBUSER+"&password="+BDConstantes.DBPASS);
+		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);
 		PreparedStatement stmt = mBD.prepareStatement(accion);
 		i=stmt.executeUpdate();
 		stmt.close();
@@ -118,7 +116,7 @@ public class AgenteBD implements BDConstantes {
 	 */
 	public static int update(String accion) throws Exception{
 		int i;
-		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING+"?user="+BDConstantes.DBUSER+"&password="+BDConstantes.DBPASS);
+		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);
 		PreparedStatement stmt = mBD.prepareStatement(accion);
 		i=stmt.executeUpdate();
 		stmt.close();

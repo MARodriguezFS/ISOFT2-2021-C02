@@ -41,16 +41,14 @@ public class Camarero {
 		AgenteBD agente = AgenteBD.getSingletonInstance();
 		String l,g;
 		Camarero camarero = null;
-		LinkedList<Object> aux = null;
+		//LinkedList<Object> aux = null;
 		LinkedList<Camarero> lista_camareros = new LinkedList<Camarero>();
 		Class.forName("com.mysql.cj.jdbc.Driver"); //.newInstance
-		LinkedList<Object> vectoradevolver=new LinkedList<Object>();
-		String SQL_Consulta = "SELECT idCamarero, Nombre FROM Camarero;";
-		vectoradevolver = agente.read(SQL_Consulta,aux,vectoradevolver, 2);
-		aux = new LinkedList<Object>();
-		while (vectoradevolver.size() >= 1){
-			aux = (LinkedList<Object>) vectoradevolver.poll();
-			camarero = new Camarero((int) aux.get(0), (String) aux.get(1));
+		LinkedList<Object> vectorADevolver=new LinkedList<Object>();
+		String SQL_Consulta = "SELECT * FROM Camarero;";
+		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 2);
+		for(int i =0;i<vectorADevolver.size();i+=2) {
+			camarero = new Camarero((int) vectorADevolver.get(i), (String)vectorADevolver.get(i+1));
 			lista_camareros.add(camarero);
 		}
 		return lista_camareros;

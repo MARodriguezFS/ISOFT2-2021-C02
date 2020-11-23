@@ -14,10 +14,14 @@ import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import java.util.LinkedList;
+import java.util.Vector;
+
 import dominio.GestorMesa;
 import dominio.GestorCamarero;
 import persistencia.Mesa;
 import persistencia.Camarero;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class IUJefeDeSala{
 
@@ -51,7 +55,7 @@ public class IUJefeDeSala{
 		frame.getContentPane().setLayout(null);
 		
 		lista_mesas = new JList();
-		DefaultListModel modelo = new DefaultListModel();
+		final DefaultListModel modelo = new DefaultListModel();
 		lista_mesas.setModel(modelo);
 		lista_mesas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		lista_mesas.setBounds(0, 0, 241, 739);
@@ -71,16 +75,32 @@ public class IUJefeDeSala{
 		
 		btnCancelarReserva = new JButton("Cancelar reserva");
 		btnCancelarReserva.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnCancelarReserva.setBounds(251, 248, 175, 157);
+		btnCancelarReserva.setBounds(251, 281, 175, 157);
 		frame.getContentPane().add(btnCancelarReserva);
 		
 		btnAsignarCamarero = new JButton("Asignar camarero");
+		btnAsignarCamarero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Mesa mesaAux;
+				GestorMesa gm = new GestorMesa();
+				mesaAux = (Mesa)lista_mesas.getSelectedValue();
+				
+				try {
+					gm.asignarCamarero((int)comboBox_camareros.getSelectedItem(),mesaAux.getmId());
+					LinkedList<Mesa> lista_mesas_BD = gm.getListaMesas();
+					modelo.clear();
+					modelo.addAll(lista_mesas_BD);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		btnAsignarCamarero.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnAsignarCamarero.setBounds(489, 248, 175, 157);
+		btnAsignarCamarero.setBounds(251, 510, 175, 157);
 		frame.getContentPane().add(btnAsignarCamarero);
 		
 		comboBox_camareros = new JComboBox();
-		comboBox_camareros.setBounds(489, 173, 175, 32);
+		comboBox_camareros.setBounds(524, 510, 175, 32);
 		frame.getContentPane().add(comboBox_camareros);
 		GestorCamarero gestor_camarero = new GestorCamarero();
 		try {
