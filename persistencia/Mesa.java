@@ -39,6 +39,19 @@ public class Mesa {
 	public void setmCamarero(int mCamarero) {
 		this.mIdCamarero = mCamarero;
 	}
+
+
+	public int getmIdCamarero() {
+		return mIdCamarero;
+	}
+
+	public void setmIdCamarero(int mIdCamarero) {
+		this.mIdCamarero = mIdCamarero;
+	}
+
+	public int getmId() {
+		return mId;
+	}
 	
 	/**
 	 * Metodo para devolver una lista de todas las mesas en la base de datos
@@ -61,18 +74,6 @@ public class Mesa {
 		return listaMesas;
 	}
 
-	public int getmIdCamarero() {
-		return mIdCamarero;
-	}
-
-	public void setmIdCamarero(int mIdCamarero) {
-		this.mIdCamarero = mIdCamarero;
-	}
-
-	public int getmId() {
-		return mId;
-	}
-
 	/**
 	 * Inserta una mesa en la base de datos
 	 * @return
@@ -93,7 +94,7 @@ public class Mesa {
 	public int delete() throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String consulta = ("DELETE FROM Mesa WHERE ('"+this.mId+"'=id);");
+		String consulta = ("DELETE FROM Mesa WHERE ('"+this.mId+"'=idMesa);");
 		int res=agente.delete(consulta);
 		return res;
 	}
@@ -106,7 +107,7 @@ public class Mesa {
 	public int cambiarEstado(String estado) throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String consulta = ("UPDATE Mesa SET estado='"+estado+"' WHERE id='"+this.mId+"';");
+		String consulta = ("UPDATE Mesa SET estado='"+estado+"' WHERE idMesa='"+this.mId+"';");
 		int res=AgenteBD.update(consulta);
 		return res;
 	}
