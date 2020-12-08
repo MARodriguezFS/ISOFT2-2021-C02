@@ -60,7 +60,6 @@ public class Mesa {
 	 */
 	public static LinkedList<Mesa> getListaMesas() throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		String l,g;
 		Mesa mesa = null;
 		LinkedList<Mesa> listaMesas = new LinkedList<Mesa>();
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -68,7 +67,7 @@ public class Mesa {
 		String SQL_Consulta = "SELECT * FROM Mesa;";
 		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 3);
 		for(int i =0;i<vectorADevolver.size();i+=3) {
-			mesa = new Mesa((int) vectorADevolver.get(i), (int) vectorADevolver.get(i+1),(String) vectorADevolver.get(i+2));
+			mesa = new Mesa((Integer) vectorADevolver.get(i), (Integer) vectorADevolver.get(i+1),(String) vectorADevolver.get(i+2));
 			listaMesas.add(mesa);
 		}
 		return listaMesas;

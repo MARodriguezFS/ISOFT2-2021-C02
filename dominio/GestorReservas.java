@@ -1,11 +1,9 @@
 package dominio;
 
-import java.util.Date;
 import java.util.LinkedList;
 
 import org.joda.time.DateTime;
 
-import persistencia.Mesa;
 import persistencia.Reserva;
 
 public class GestorReservas {

@@ -57,7 +57,6 @@ public class Reserva {
 	}
 	public static LinkedList<Reserva> getListaReservas() throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		String l,g;
 		Reserva reserva = null;
 		LinkedList<Reserva> listaReservas = new LinkedList<Reserva>();
 		Class.forName("com.mysql.cj.jdbc.Driver");
@@ -65,7 +64,7 @@ public class Reserva {
 		String SQL_Consulta = "SELECT * FROM Reserva;";
 		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 5);
 		for(int i =0;i<vectorADevolver.size();i+=5) {
-			reserva = new Reserva((int) vectorADevolver.get(i), (int) vectorADevolver.get(i+1),(int) vectorADevolver.get(i+2),(Timestamp) vectorADevolver.get(i+3),(String) vectorADevolver.get(i+4));
+			reserva = new Reserva((Integer) vectorADevolver.get(i), (Integer) vectorADevolver.get(i+1),(Integer) vectorADevolver.get(i+2),(Timestamp) vectorADevolver.get(i+3),(String) vectorADevolver.get(i+4));
 			listaReservas.add(reserva);
 		}
 		return listaReservas;

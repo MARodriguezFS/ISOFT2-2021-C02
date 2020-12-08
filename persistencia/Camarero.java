@@ -3,10 +3,10 @@ package persistencia;
 import java.util.LinkedList;
 
 /**
- * Esta clase sirve de intermediario entre el GestorCamarero (que se encuentra en la capa de dominio), y el AgenteBD, que será el que se comunique con
+ * Esta clase sirve de intermediario entre el GestorCamarero (que se encuentra en la capa de dominio), y el AgenteBD, que serÃ¡ el que se comunique con
  * la BD.
  * 
- * @author Miguel Ángel Rodríguez Fernández de Simón
+ * @author Miguel Ã�ngel RodrÃ­guez FernÃ¡ndez de SimÃ³n
  * @version 0.1.0
  * @see AgenteBD
  * @since 0.1.0
@@ -17,13 +17,13 @@ public class Camarero {
 	private int id;
 	
 	/**
-	 * Constructor vacío para la creación del objeto por parte de GestorCamarero.
+	 * Constructor vacÃ­o para la creaciÃ³n del objeto por parte de GestorCamarero.
 	 */
 	public Camarero() {
 	}
 	
 	/**
-	 * Constructor utilizado para la creación de objetos camareros por parte de la propia clase, para su uso en distintas funcionalidades.
+	 * Constructor utilizado para la creaciÃ³n de objetos camareros por parte de la propia clase, para su uso en distintas funcionalidades.
 	 * @param id
 	 * @param nombre
 	 */
@@ -33,13 +33,12 @@ public class Camarero {
 	}
 	
 	/**
-	 * Este método devuelve una lista con todos los camareros del local (con su id y su nombre).
+	 * Este mÃ©todo devuelve una lista con todos los camareros del local (con su id y su nombre).
 	 * @return
 	 * @throws Exception
 	 */
 	public static LinkedList<Camarero> get_lista_camareros() throws Exception{
 		AgenteBD agente = AgenteBD.getSingletonInstance();
-		String l,g;
 		Camarero camarero = null;
 		//LinkedList<Object> aux = null;
 		LinkedList<Camarero> lista_camareros = new LinkedList<Camarero>();
@@ -48,14 +47,14 @@ public class Camarero {
 		String SQL_Consulta = "SELECT * FROM Camarero;";
 		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 2);
 		for(int i =0;i<vectorADevolver.size();i+=2) {
-			camarero = new Camarero((int) vectorADevolver.get(i), (String)vectorADevolver.get(i+1));
-			lista_camareros.add(camarero);
+		camarero = new Camarero((Integer) vectorADevolver.get(i), (String)vectorADevolver.get(i+1));
+		lista_camareros.add(camarero);
 		}
 		return lista_camareros;
-	}
+		}
 	
 	/**
-	 * Este método permite cambiar el nombre de un camarero.
+	 * Este mÃ©todo permite cambiar el nombre de un camarero.
 	 * @param nombre
 	 */
 	public void set_nombre(String nombre) {
@@ -63,7 +62,7 @@ public class Camarero {
 	}
 	
 	/**
-	 * Este método permite cambiar el id de un camarero.
+	 * Este mÃ©todo permite cambiar el id de un camarero.
 	 * @param id
 	 */
 	public void set_id(int id) {

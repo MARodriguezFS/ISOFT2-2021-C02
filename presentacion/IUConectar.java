@@ -5,9 +5,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Rectangle;
 import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.JToggleButton;
-import javax.swing.JRadioButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -74,6 +71,13 @@ public class IUConectar {
 		btnCamarero.setFont(new Font("Tahoma", Font.PLAIN, 37));
 		btnCamarero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					IU_Camarero iu_camarero = new IU_Camarero();
+					iu_camarero.set_visible(true);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				frame.setVisible(false);
 			}
 		});
 		btnCamarero.setBounds(577, 102, 303, 272);

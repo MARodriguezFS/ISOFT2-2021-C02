@@ -1,17 +1,11 @@
 package presentacion;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 
-import dominio.GestorCamarero;
-import dominio.GestorMesa;
 import dominio.GestorReservas;
-import persistencia.Camarero;
-import persistencia.Mesa;
 import persistencia.Reserva;
 
 import javax.swing.DefaultListModel;

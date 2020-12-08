@@ -1,17 +1,9 @@
 package presentacion;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import java.awt.Dimension;
 import java.awt.Rectangle;
 import javax.swing.JList;
 import javax.swing.JButton;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.swing.ListSelectionModel;
 
@@ -22,9 +14,7 @@ import org.joda.time.format.DateTimeFormatter;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import java.awt.Font;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.Vector;
 
 import dominio.GestorMesa;
 import dominio.GestorReservas;
@@ -34,8 +24,6 @@ import persistencia.Mesa;
 import persistencia.Camarero;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
 import javax.swing.JTextField;
 
 public class IUJefeDeSala implements HorasTurnos, EstadosMesas{
@@ -50,7 +38,7 @@ public class IUJefeDeSala implements HorasTurnos, EstadosMesas{
 	private JComboBox comboBoxTurnos;
 	private JComboBox cbDia;
 	private JComboBox cbMes;
-	private JComboBox cbAÃ±o;
+	private JComboBox cbAño;
 
 
 	/**
@@ -110,11 +98,11 @@ public class IUJefeDeSala implements HorasTurnos, EstadosMesas{
 			cbMes.addItem(aux);
 		}
 
-		cbAÃ±o = new JComboBox();
-		cbAÃ±o.setBounds(767, 117, 71, 22);
-		frame.getContentPane().add(cbAÃ±o);
+		cbAño = new JComboBox();
+		cbAño.setBounds(767, 117, 71, 22);
+		frame.getContentPane().add(cbAño);
 		for(int i =2020;i<2040;i++) {
-			cbAÃ±o.addItem(i);
+			cbAño.addItem(i);
 		}
 
 		comboBoxTurnos = new JComboBox();
@@ -145,7 +133,7 @@ public class IUJefeDeSala implements HorasTurnos, EstadosMesas{
 				GestorMesa gm = new GestorMesa();
 				GestorReservas gr = new GestorReservas();
 				mesaAux = (Mesa)lista_mesas.getSelectedValue();
-				fechaAux =cbAÃ±o.getSelectedItem()+"-"+cbMes.getSelectedItem()+"-"+cbDia.getSelectedItem()+" "+comboBoxTurnos.getSelectedItem();
+				fechaAux =cbAño.getSelectedItem()+"-"+cbMes.getSelectedItem()+"-"+cbDia.getSelectedItem()+" "+comboBoxTurnos.getSelectedItem();
 				DateTime fecha = null;
 
 				fecha = formatter.parseDateTime(fechaAux);
@@ -189,7 +177,7 @@ public class IUJefeDeSala implements HorasTurnos, EstadosMesas{
 				mesaAux = (Mesa)lista_mesas.getSelectedValue();
 
 				try {
-					gm.asignarCamarero((int)comboBox_camareros.getSelectedItem(),mesaAux.getmId());
+					gm.asignarCamarero((Integer)comboBox_camareros.getSelectedItem(),mesaAux.getmId());
 					LinkedList<Mesa> lista_mesas_BD = gm.getListaMesas();
 					modelo.clear();
 					modelo.addAll(lista_mesas_BD);
