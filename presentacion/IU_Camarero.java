@@ -51,7 +51,7 @@ public class IU_Camarero {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 305, 384);
+		frame.setBounds(100, 100, 305, 457);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -115,25 +115,40 @@ public class IU_Camarero {
 				}
 			}
 		});
-		btnActualizarEstado.setBounds(79, 301, 135, 23);
+		btnActualizarEstado.setBounds(83, 386, 135, 23);
 		frame.getContentPane().add(btnActualizarEstado);
 		
 		JLabel lblEstado = new JLabel("Nuevo Estado:");
-		lblEstado.setBounds(25, 221, 76, 14);
+		lblEstado.setBounds(29, 306, 76, 14);
 		frame.getContentPane().add(lblEstado);
 		
 		txtNuevoEstado = new JTextField();
-		txtNuevoEstado.setBounds(25, 246, 96, 20);
+		txtNuevoEstado.setBounds(29, 331, 96, 20);
 		frame.getContentPane().add(txtNuevoEstado);
 		txtNuevoEstado.setColumns(10);
 		
 		JLabel lblIDMesa = new JLabel("ID mesa:");
-		lblIDMesa.setBounds(165, 221, 49, 14);
+		lblIDMesa.setBounds(169, 306, 49, 14);
 		frame.getContentPane().add(lblIDMesa);
 		
 		txtIDMesa = new JTextField();
-		txtIDMesa.setBounds(165, 246, 96, 20);
+		txtIDMesa.setBounds(169, 331, 96, 20);
 		frame.getContentPane().add(txtIDMesa);
 		txtIDMesa.setColumns(10);
+		
+		JButton btnCuenta = new JButton("Generar Cuenta");
+		btnCuenta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaCuenta ventana_cuenta = new VentanaCuenta();
+				try {
+					ventana_cuenta.set_visible(true);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+				frame.setVisible(false);
+			}
+		});
+		btnCuenta.setBounds(79, 225, 135, 23);
+		frame.getContentPane().add(btnCuenta);
 	}
 }

@@ -22,7 +22,6 @@ public class VentanaComanda {
 	private JTextField txtPostre;
 	private JTextField txtBebida;
 	private JTextField txtEntrantes;
-	private JTextField txtID;
 	private JTextField txtIDCamarero;
 	private JTextField txtIDMesa;
 
@@ -58,7 +57,7 @@ public class VentanaComanda {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 548);
+		frame.setBounds(100, 100, 450, 481);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -112,22 +111,12 @@ public class VentanaComanda {
 		txtEntrantes.setBounds(170, 237, 110, 20);
 		frame.getContentPane().add(txtEntrantes);
 		
-		JLabel lblID = new JLabel("ID:");
-		lblID.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblID.setBounds(76, 293, 63, 14);
-		frame.getContentPane().add(lblID);
-		
-		txtID = new JTextField();
-		txtID.setColumns(10);
-		txtID.setBounds(170, 290, 110, 20);
-		frame.getContentPane().add(txtID);
-		
 		JButton btnAnotarComanda = new JButton("Anotar comanda");
 		btnAnotarComanda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GestorCamarero gestor_camarero = new GestorCamarero();
 				try {
-				gestor_camarero.crearComanda(Integer.parseInt(txtID.getText()), Integer.parseInt(txtPrimero.getText()), Integer.parseInt(txtSegundo.getText()), Integer.parseInt(txtPostre.getText()), 
+				gestor_camarero.crearComanda(Integer.parseInt(txtPrimero.getText()), Integer.parseInt(txtSegundo.getText()), Integer.parseInt(txtPostre.getText()), 
 						Integer.parseInt(txtBebida.getText()), Integer.parseInt(txtEntrantes.getText()), Integer.parseInt(txtIDCamarero.getText()), Integer.parseInt(txtIDMesa.getText()));
 				JOptionPane.showMessageDialog(frame, "Comanda anotada con éxito", "Comanda Anotada",
 						JOptionPane.INFORMATION_MESSAGE);
@@ -136,26 +125,26 @@ public class VentanaComanda {
 				}
 			}
 		});
-		btnAnotarComanda.setBounds(166, 477, 114, 23);
+		btnAnotarComanda.setBounds(166, 403, 114, 23);
 		frame.getContentPane().add(btnAnotarComanda);
 		
 		JLabel lblIDCamarero = new JLabel("IdCamarero:");
 		lblIDCamarero.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblIDCamarero.setBounds(76, 351, 63, 14);
+		lblIDCamarero.setBounds(76, 292, 63, 14);
 		frame.getContentPane().add(lblIDCamarero);
 		
 		txtIDCamarero = new JTextField();
-		txtIDCamarero.setBounds(170, 348, 110, 20);
+		txtIDCamarero.setBounds(170, 289, 110, 20);
 		frame.getContentPane().add(txtIDCamarero);
 		txtIDCamarero.setColumns(10);
 		
 		JLabel lblIDMesa = new JLabel("IdMesa:");
 		lblIDMesa.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblIDMesa.setBounds(76, 407, 63, 14);
+		lblIDMesa.setBounds(76, 348, 63, 14);
 		frame.getContentPane().add(lblIDMesa);
 		
 		txtIDMesa = new JTextField();
-		txtIDMesa.setBounds(170, 404, 110, 20);
+		txtIDMesa.setBounds(170, 345, 110, 20);
 		frame.getContentPane().add(txtIDMesa);
 		txtIDMesa.setColumns(10);
 	}

@@ -32,6 +32,20 @@ public class Comanda {
 		setIdMesa(idMesa);
 	}
 	
+	public Comanda(int primero, int segundo, int postre, int bebida, int entrantes, int idCamarero, int idMesa) {
+		setPrimero(primero);
+		setSegundo(segundo);
+		setPostre(postre);
+		setBebida(bebida);
+		setEntrantes(entrantes);
+		setIdCamarero(idCamarero);
+		setIdMesa(idMesa);
+	}
+	
+	public Comanda(int idComanda) {
+		setIdComanda(idComanda);
+	}
+	
 	/**
 	 * Inserta una comanda en la base de datos
 	 * @return
@@ -41,7 +55,7 @@ public class Comanda {
 	public int insert() throws Exception {
 		AgenteBD agente = AgenteBD.getSingletonInstance();
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String consulta = "INSERT INTO Comanda (idComanda,primero,segundo,postre,bebida,entrante,idCamarero,idMesa) VALUES('"+this.idComanda+"','" +this.primero+"','"+this.segundo+"','"+this.postre+"','"+this.bebida+"','"+this.entrantes+"','"+this.idCamarero+"','"+this.idMesa+"')";
+		String consulta = "INSERT INTO Comanda (primero,segundo,postre,bebida,entrante,idCamarero,idMesa) VALUES('" +this.primero+"','"+this.segundo+"','"+this.postre+"','"+this.bebida+"','"+this.entrantes+"','"+this.idCamarero+"','"+this.idMesa+"')";
 		int res = agente.insert(consulta);
 		return res;
 	}
@@ -60,6 +74,23 @@ public class Comanda {
 			listaComandas.add(comanda);
 		}
 		return listaComandas;
+	}
+	
+	public double cuenta() throws Exception{
+		double cuenta = 0;
+		AgenteBD agente = AgenteBD.getSingletonInstance();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		LinkedList<Object> vectorADevolver = new LinkedList<Object>();
+		String precioBebida = "SELECT precio FROM Bebida WHERE idBebida=(SELECT bebida FROM Comanda WHERE idComanda="+this.idComanda+");";
+		vectorADevolver = agente.read(precioBebida,vectorADevolver,1);
+		String precioPrimero = "SELECT precio FROM Comida WHERE idComida=(SELECT primero FROM Comanda WHERE idComanda="+this.idComanda+");";
+		vectorADevolver = agente.read(precioPrimero,vectorADevolver,1);
+		String precioSegundo = "SELECT precio FROM Comida WHERE idComida=(SELECT segundo FROM Comanda WHERE idComanda="+this.idComanda+");";
+		vectorADevolver = agente.read(precioSegundo,vectorADevolver,1);
+		for(int i = 0; i < vectorADevolver.size(); i+=3) {
+			cuenta = (Double) vectorADevolver.get(i) + (Double) vectorADevolver.get(i+1) + (Double) vectorADevolver.get(i+2);
+		}
+		return cuenta;
 	}
 	
 	public int getIdCamarero() {

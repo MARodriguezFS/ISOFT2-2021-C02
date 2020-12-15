@@ -29,15 +29,21 @@ public class GestorCamarero implements EstadosMesas{
 		return Camarero.get_lista_camareros();
 	}
 	
-	public static boolean crearComanda(int idComanda, int primero, int segundo, int postre, int bebida, int entrantes, int idCamarero, int idMesa) throws Exception{
+	public static boolean crearComanda(int primero, int segundo, int postre, int bebida, int entrantes, int idCamarero, int idMesa) throws Exception{
 		boolean creada = false;
-		creada = GestorComanda.crearComanda(idComanda, primero, segundo, postre, bebida, entrantes, idCamarero, idMesa);
+		creada = GestorComanda.crearComanda(primero, segundo, postre, bebida, entrantes, idCamarero, idMesa);
 		return creada;
 	}
 	
 	public static boolean cambiarEstado(String estado, int idMesa) throws Exception{
 		boolean cambio = false;
 		cambio = GestorMesa.cambiarEstado(estado, idMesa);
+		return cambio;
+	}
+	
+	public static boolean prepararMesa(int idMesa) throws Exception{
+		boolean cambio = false;
+		cambio = GestorMesa.cambiarEstado("En preparación", idMesa);
 		return cambio;
 	}
 	
