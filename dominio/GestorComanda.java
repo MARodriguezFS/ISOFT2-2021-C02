@@ -8,7 +8,7 @@ import persistencia.Mesa;
 /**
  * Esta clase utiliza la clase Comanda para poder realizar sus funcionalidades.
  * 
- * @author Alejandro Ruiz Aranda y Jesús Santiyán Reviriego
+ * @author Alejandro Ruiz Aranda y JesÃºs SantiyÃ¡n Reviriego
  * @version 0.1.0
  * @see Comanda
  * @since 0.1.0
@@ -17,7 +17,7 @@ import persistencia.Mesa;
 public class GestorComanda {
 	
 	/**
-	 * Constructor vacío para utilizar el gestor.
+	 * Constructor vacÃ­o para utilizar el gestor.
 	 */
 	
 	public GestorComanda() {
