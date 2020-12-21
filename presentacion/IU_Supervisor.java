@@ -60,7 +60,7 @@ public class IU_Supervisor {
 			public void actionPerformed(ActionEvent arg0) {
 				GestorEstadisticas ge = new GestorEstadisticas();
 				try {
-					long tiempo = ge.tiempoComandas();
+					double tiempo = ge.tiempoComandas();
 					JOptionPane.showMessageDialog(frame, "Ha tardado "+tiempo+" tiempo en tomar la comanda", "Tiempo Comanda",
 							JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e) {
@@ -77,7 +77,7 @@ public class IU_Supervisor {
 			public void actionPerformed(ActionEvent arg0) {
 				GestorEstadisticas ge = new GestorEstadisticas();
 				try {
-					long tiempo = ge.tiempoMesa();
+					double tiempo = ge.tiempoMesa();
 					JOptionPane.showMessageDialog(frame, "Ha tardado "+tiempo+" tiempo en preparar la mesa", "Tiempo Mesa",
 							JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e) {
@@ -95,7 +95,7 @@ public class IU_Supervisor {
 			public void actionPerformed(ActionEvent arg0) {
 				GestorEstadisticas ge = new GestorEstadisticas();
 				try {
-					long tiempo = ge.tiempoComida();
+					double tiempo = ge.tiempoComida();
 					JOptionPane.showMessageDialog(frame, "Ha tardado "+tiempo+" tiempo en preparar comida", "Tiempo Comida",
 							JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e) {
@@ -113,7 +113,7 @@ public class IU_Supervisor {
 			public void actionPerformed(ActionEvent arg0) {
 				GestorEstadisticas ge = new GestorEstadisticas();
 				try {
-					long tiempo = ge.tiempoCuenta();
+					double tiempo = ge.tiempoCuenta();
 					JOptionPane.showMessageDialog(frame, "Ha tardado "+tiempo+" tiempo en esperar cuenta", "Tiempo Cuenta",
 							JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e) {
