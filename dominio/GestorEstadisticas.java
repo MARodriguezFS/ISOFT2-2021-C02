@@ -13,36 +13,24 @@ public class GestorEstadisticas {
 	public GestorEstadisticas() {
 	}
 	
-	public long tiempoComandas() throws Exception{
-		long tInicial = System.currentTimeMillis();
+	public double tiempoComandas() throws Exception{
 		Mesa mesa = new Mesa(1);
-		int tFinal = mesa.consultarTiempoMedio(1);
-		long tiempoFinal= tFinal- tInicial;
-		return tiempoFinal;
+		return mesa.consultarTiempoMedio(1);
 	}
 	
-	public long tiempoComida() throws Exception{
-		long tInicial = System.currentTimeMillis();
+	public double tiempoComida() throws Exception{
 		Mesa mesa = new Mesa(1);
-		int tFinal = mesa.consultarTiempoMedio(2);
-		long tiempoFinal= tFinal- tInicial;
-		return tiempoFinal;
+		return mesa.consultarTiempoMedio(2);
 	}
 	
-	public long tiempoCuenta() throws Exception{
-		long tInicial = System.currentTimeMillis();
+	public double tiempoCuenta() throws Exception{
 		Mesa mesa = new Mesa(1);
-		int tFinal = mesa.consultarTiempoMedio(3);
-		long tiempoFinal= tFinal- tInicial;
-		return tiempoFinal;
+		return mesa.consultarTiempoMedio(3);
 	}
 	
-	public long tiempoMesa() throws Exception{
-		long tInicial = System.currentTimeMillis();
+	public double tiempoMesa() throws Exception{
 		Mesa mesa = new Mesa(1);
-		int tFinal = mesa.consultarTiempoMedio(4);
-		long tiempoFinal= tFinal- tInicial;
-		return tiempoFinal;
+		return mesa.consultarTiempoMedio(4);
 	}
 	
 }
