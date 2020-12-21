@@ -3,8 +3,6 @@ package persistencia;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 
-import com.google.protobuf.Int32Value;
-
 import dominio.GestorComanda;
 /**
  * Esta clase sería la clase DAO y sirve como intermediario entre el agente y la clase GestorMesa
