@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AgenteBD.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">persistencia</a> &gt; <span class="el_source">AgenteBD.java</span></div><h1>AgenteBD.java</h1><pre class="source lang-java linenums">package persistencia;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.LinkedList;
+
+/**
+ * Esta clase es la encargada de comunicarse con la BD para enviar todas las sentencias SQL que necesite la aplicación.
+ * 
+ * @author Fernando Rodríguez Gallego y Miguel Ángel Rodríguez Fernández de Simón
+ * @version 0.1.0
+ * @see BDConstantes
+ * @since 0.1.0
+ *
+ */
+
+public class AgenteBD implements BDConstantes {
+
+	private static AgenteBD agenteBD;
+	
+	/**
+	 * Constructor vacío.
+	 */
+<span class="fc" id="L27">	private AgenteBD(){</span>
+
+<span class="fc" id="L29">	}</span>
+	
+	/**
+	 * Este método permite recuperar el String de conexión de la BD.
+	 * @return
+	 */
+	public String getCONNECTION_STRING(){
+<span class="nc" id="L36">		return BDConstantes.CONNECTION_STRING;</span>
+	}
+	
+	/**
+	 * Este método permite recuperar el nombre de usuario de la BD.
+	 * @return
+	 */
+	public String getDBUSER(){
+<span class="nc" id="L44">		return BDConstantes.DBUSER;</span>
+	}
+	
+	/**
+	 * Este método permite recuperar la contraseña para acceder a la BD.
+	 * @return
+	 */
+	public String getDBPASS(){
+<span class="nc" id="L52">		return BDConstantes.DBPASS;</span>
+	}
+	
+	/**
+	 * Este método se encarga de leer datos de la BD según la consulta SQL que se le haya proporcionado, y en base al número de variables que se requieran.
+	 * @param SQL_Consulta
+	 * @param aux
+	 * @param vectoradevolver
+	 * @param numero_variables
+	 * @return
+	 * @throws Exception
+	 */
+	public static LinkedList&lt;Object&gt; read(String SQL_Consulta,LinkedList&lt;Object&gt; vectoradevolver, int numero_variables) throws Exception{
+		
+<span class="fc" id="L66">		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);	</span>
+<span class="fc" id="L67">		Statement stmt = mBD.createStatement();</span>
+<span class="fc" id="L68">		ResultSet res = stmt.executeQuery(SQL_Consulta);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		while (res.next()) {</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">			for (int i=1; i&lt;=numero_variables; i++) {</span>
+<span class="fc" id="L71">				vectoradevolver.add(res.getObject(i));</span>
+			}
+		}
+<span class="fc" id="L74">		stmt.close();</span>
+<span class="fc" id="L75">		mBD.close();</span>
+<span class="fc" id="L76">		return vectoradevolver;</span>
+	}
+	
+	/**
+	 * Este método permite insertar datos en la BD.
+	 * @param accion
+	 * @return
+	 * @throws Exception
+	 */
+	public static int insert(String accion) throws Exception{
+		int i;
+<span class="fc" id="L87">		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);</span>
+<span class="fc" id="L88">		PreparedStatement stmt = mBD.prepareStatement(accion);</span>
+<span class="nc" id="L89">		i=stmt.executeUpdate();</span>
+<span class="nc" id="L90">		stmt.close();</span>
+<span class="nc" id="L91">		mBD.close();</span>
+<span class="nc" id="L92">		return i;</span>
+	}
+
+	/**
+	 * Este método permite borrar datos de la BD.
+	 * @param accion
+	 * @return
+	 * @throws Exception
+	 */
+	public static int delete(String accion) throws Exception{
+		int i;
+<span class="fc" id="L103">		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);</span>
+<span class="fc" id="L104">		PreparedStatement stmt = mBD.prepareStatement(accion);</span>
+<span class="fc" id="L105">		i=stmt.executeUpdate();</span>
+<span class="fc" id="L106">		stmt.close();</span>
+<span class="fc" id="L107">		mBD.close();</span>
+<span class="fc" id="L108">		return i;</span>
+	}
+
+	/**
+	 * Este método permite actualizar la BD.
+	 * @param accion
+	 * @return
+	 * @throws Exception
+	 */
+	public static int update(String accion) throws Exception{
+		int i;
+<span class="fc" id="L119">		Connection mBD = DriverManager.getConnection(BDConstantes.CONNECTION_STRING,BDConstantes.DBUSER,BDConstantes.DBPASS);</span>
+<span class="fc" id="L120">		PreparedStatement stmt = mBD.prepareStatement(accion);</span>
+<span class="fc" id="L121">		i=stmt.executeUpdate();</span>
+<span class="fc" id="L122">		stmt.close();</span>
+<span class="fc" id="L123">		mBD.close();</span>
+<span class="fc" id="L124">		return i;</span>
+	}
+	
+	/**
+	 * Este método asegura que sólo hay un agente en ejecución, y será el que llamen las clases que quieran acceder al Agente.
+	 * @return
+	 */
+	public static AgenteBD getSingletonInstance() {
+<span class="fc bfc" id="L132" title="All 2 branches covered.">		if (agenteBD == null){</span>
+<span class="fc" id="L133">			agenteBD = new AgenteBD();</span>
+		}
+
+<span class="fc" id="L136">		return agenteBD;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

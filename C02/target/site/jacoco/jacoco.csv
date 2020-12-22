@@ -1,0 +1,19 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+C02,dominio,GestorJefeSala,0,31,2,2,0,12,2,3,0,3
+C02,dominio,GestorCamarero,0,5,0,0,0,3,0,2,0,2
+C02,dominio,GestorMesa,10,57,5,3,4,19,4,6,0,6
+C02,dominio,GestorReservas,10,28,3,1,4,9,2,4,0,4
+C02,presentacion,IUCancelarReserva.new ActionListener() {...},28,9,0,0,9,1,1,1,1,1
+C02,presentacion,IUCancelarReserva,3,105,0,0,1,23,0,2,0,2
+C02,presentacion,IUConectar.new MouseAdapter() {...},17,6,0,0,6,1,1,1,1,1
+C02,presentacion,IUConectar.new Runnable() {...},3,13,0,0,1,5,0,2,0,2
+C02,presentacion,IUConectar.new ActionListener() {...},1,6,0,0,1,1,1,1,1,1
+C02,presentacion,IUConectar,0,111,0,0,0,21,0,3,0,3
+C02,presentacion,IUJefeDeSala,6,414,0,12,2,77,0,9,0,3
+C02,presentacion,IUJefeDeSala.new ActionListener() {...},34,9,0,0,9,1,1,1,1,1
+C02,presentacion,IUJefeDeSala.new ActionListener() {...},9,6,0,0,4,1,1,1,1,1
+C02,presentacion,IUJefeDeSala.new ActionListener() {...},87,9,0,0,15,1,1,1,1,1
+C02,persistencia,Camarero,16,71,0,2,3,20,2,6,2,5
+C02,persistencia,Reserva,40,212,0,2,5,50,2,12,2,11
+C02,persistencia,Mesa,34,181,0,2,7,46,4,12,4,11
+C02,persistencia,AgenteBD,15,91,0,6,7,28,3,9,3,6

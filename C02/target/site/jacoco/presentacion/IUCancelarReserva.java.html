@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IUCancelarReserva.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">presentacion</a> &gt; <span class="el_source">IUCancelarReserva.java</span></div><h1>IUCancelarReserva.java</h1><pre class="source lang-java linenums">package presentacion;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.Color;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+
+import dominio.GestorCamarero;
+import dominio.GestorMesa;
+import dominio.GestorReservas;
+import persistencia.Camarero;
+import persistencia.Mesa;
+import persistencia.Reserva;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.awt.event.ActionEvent;
+
+public class IUCancelarReserva {
+
+	private JFrame frame;
+	private JList listaReservas;
+	/**
+	 * Launch the application.
+	 */
+	
+
+	/**
+	 * Create the application.
+	 */
+<span class="fc" id="L35">	public IUCancelarReserva() {</span>
+<span class="fc" id="L36">		initialize();</span>
+<span class="fc" id="L37">	}</span>
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+<span class="fc" id="L43">		frame = new JFrame();</span>
+<span class="fc" id="L44">		frame.setBackground(new Color(240, 240, 240));</span>
+<span class="fc" id="L45">		frame.setBounds(100, 100, 1024, 768);</span>
+<span class="fc" id="L46">		frame.getContentPane().setLayout(null);</span>
+		
+<span class="fc" id="L48">		listaReservas = new JList();</span>
+<span class="fc" id="L49">		final DefaultListModel modelo = new DefaultListModel();</span>
+<span class="fc" id="L50">		listaReservas.setModel(modelo);</span>
+<span class="fc" id="L51">		listaReservas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);</span>
+<span class="fc" id="L52">		frame.getContentPane().add(listaReservas);</span>
+<span class="fc" id="L53">		GestorReservas gestorReservas = new GestorReservas();</span>
+		try {
+<span class="fc" id="L55">			LinkedList&lt;Reserva&gt; listaReservasBD = gestorReservas.getListaReservas();</span>
+			//modelo.addAll(listaReservasBD);
+<span class="pc" id="L57">		} catch (Exception e) {</span>
+<span class="nc" id="L58">			e.printStackTrace();</span>
+		}
+<span class="fc" id="L60">		listaReservas.setBounds(0, 0, 587, 729);</span>
+<span class="fc" id="L61">		frame.getContentPane().add(listaReservas);</span>
+		
+<span class="fc" id="L63">		JButton btnCancelar = new JButton(&quot;Cancelar&quot;);</span>
+<span class="fc" id="L64">		btnCancelar.addActionListener(new ActionListener() {</span>
+			public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L66">				GestorReservas gestorReservas = new GestorReservas();</span>
+				Reserva reservaAux;
+<span class="nc" id="L68">				reservaAux = (Reserva)listaReservas.getSelectedValue();</span>
+				
+				try {
+<span class="nc" id="L71">					gestorReservas.eliminarReserva(reservaAux.getIdReserva());</span>
+<span class="nc" id="L72">					LinkedList&lt;Reserva&gt; listaReservas = gestorReservas.getListaReservas();</span>
+<span class="nc" id="L73">					modelo.clear();</span>
+<span class="nc" id="L74">					modelo.addAll(listaReservas);</span>
+<span class="nc" id="L75">				} catch (Exception e) {</span>
+<span class="nc" id="L76">					e.printStackTrace();</span>
+				}
+<span class="nc" id="L78">			}</span>
+		});
+<span class="fc" id="L80">		btnCancelar.setBounds(690, 270, 216, 170);</span>
+<span class="fc" id="L81">		frame.getContentPane().add(btnCancelar);</span>
+<span class="fc" id="L82">		frame.setVisible(true);</span>
+		
+<span class="fc" id="L84">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Reserva.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">persistencia</a> &gt; <span class="el_source">Reserva.java</span></div><h1>Reserva.java</h1><pre class="source lang-java linenums">package persistencia;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.LinkedList;
+
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+public class Reserva {
+<span class="fc" id="L12">	private DateTimeFormatter formatter = DateTimeFormat.forPattern(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span>
+	private int idReserva;
+	private int idMesa;
+	private int turno;
+	private DateTime fecha;
+	private String nombreCliente;
+	
+<span class="fc" id="L19">	public Reserva(int idReserva) {</span>
+<span class="fc" id="L20">		setIdReserva(idReserva);</span>
+<span class="fc" id="L21">	}</span>
+	
+	public Reserva(int idReserva, int idMesa, int turno, Timestamp fechaAux, String nombreCliente) {
+<span class="fc" id="L24">		super();</span>
+		DateTime fecha;
+<span class="fc" id="L26">		String aux = &quot;&quot;;</span>
+<span class="fc" id="L27">		setIdReserva(idReserva);</span>
+<span class="fc" id="L28">		setIdMesa(idMesa);</span>
+<span class="fc" id="L29">		setTurno(turno);</span>
+<span class="fc" id="L30">		aux = fechaAux.toString();</span>
+<span class="fc" id="L31">		aux = aux.substring(0, aux.length()-2);</span>
+<span class="fc" id="L32">		fecha = formatter.parseDateTime(aux);</span>
+<span class="fc" id="L33">		setFecha(fecha);</span>
+<span class="fc" id="L34">		setNombreCliente(nombreCliente);</span>
+<span class="fc" id="L35">	}</span>
+	public Reserva(int idMesa, int turno, DateTime fecha, String nombreCliente) {
+<span class="fc" id="L37">		super();</span>
+<span class="fc" id="L38">		setIdMesa(idMesa);</span>
+<span class="fc" id="L39">		setTurno(turno);</span>
+<span class="fc" id="L40">		setFecha(fecha);</span>
+<span class="fc" id="L41">		setNombreCliente(nombreCliente);</span>
+<span class="fc" id="L42">	}</span>
+	public void setIdReserva(int idReserva) {
+<span class="fc" id="L44">		this.idReserva = idReserva;</span>
+<span class="fc" id="L45">	}</span>
+	public void setIdMesa(int idMesa) {
+<span class="fc" id="L47">		this.idMesa = idMesa;</span>
+<span class="fc" id="L48">	}</span>
+	public void setTurno(int turno) {
+<span class="fc" id="L50">		this.turno = turno;</span>
+<span class="fc" id="L51">	}</span>
+	public void setFecha(DateTime fecha) {
+<span class="fc" id="L53">		this.fecha = fecha;</span>
+<span class="fc" id="L54">	}</span>
+	public void setNombreCliente(String nombreCliente) {
+<span class="fc" id="L56">		this.nombreCliente = nombreCliente;</span>
+<span class="fc" id="L57">	}</span>
+	public static LinkedList&lt;Reserva&gt; getListaReservas() throws Exception{
+<span class="fc" id="L59">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+		String l,g;
+<span class="fc" id="L61">		Reserva reserva = null;</span>
+<span class="fc" id="L62">		LinkedList&lt;Reserva&gt; listaReservas = new LinkedList&lt;Reserva&gt;();</span>
+<span class="fc" id="L63">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="fc" id="L64">		LinkedList&lt;Object&gt; vectorADevolver=new LinkedList&lt;Object&gt;();</span>
+<span class="fc" id="L65">		String SQL_Consulta = &quot;SELECT * FROM Reserva;&quot;;</span>
+<span class="fc" id="L66">		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 5);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		for(int i =0;i&lt;vectorADevolver.size();i+=5) {</span>
+<span class="fc" id="L68">			reserva = new Reserva((Integer) vectorADevolver.get(i), (Integer) vectorADevolver.get(i+1),(Integer) vectorADevolver.get(i+2),(Timestamp) vectorADevolver.get(i+3),(String) vectorADevolver.get(i+4));</span>
+<span class="fc" id="L69">			listaReservas.add(reserva);</span>
+		}
+<span class="fc" id="L71">		return listaReservas;</span>
+	}
+
+	public int insert() throws Exception{
+<span class="fc" id="L75">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+<span class="fc" id="L76">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="fc" id="L77">		String consulta = &quot;INSERT INTO Reserva (idMesa,turno,fecha,nombreCliente) VALUES('&quot;+this.idMesa+&quot;','&quot; +this.turno+&quot;','&quot;+this.fecha+&quot;','&quot;+this.nombreCliente+&quot;')&quot;;</span>
+<span class="nc" id="L78">		int res=agente.insert(consulta);</span>
+<span class="nc" id="L79">		return res;</span>
+	}
+	
+	public int delete() throws Exception{
+<span class="fc" id="L83">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+<span class="fc" id="L84">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="fc" id="L85">		String consulta = (&quot;DELETE FROM Reserva WHERE ('&quot;+this.idReserva+&quot;'=idReserva);&quot;);</span>
+<span class="fc" id="L86">		int res=agente.delete(consulta);</span>
+<span class="fc" id="L87">		return res;</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="nc" id="L92">		return &quot;Reserva [idReserva=&quot; + idReserva + &quot;, idMesa=&quot; + idMesa + &quot;, turno=&quot; + turno + &quot;, fecha=&quot; + fecha.toString()</span>
+<span class="nc" id="L93">				+ &quot;, nombreCliente=&quot; + nombreCliente + &quot;]&quot;;</span>
+	}
+
+	public int getIdReserva() {
+<span class="nc" id="L97">		return idReserva;</span>
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

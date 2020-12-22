@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Camarero.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">persistencia</a> &gt; <span class="el_source">Camarero.java</span></div><h1>Camarero.java</h1><pre class="source lang-java linenums">package persistencia;
+
+import java.util.LinkedList;
+
+/**
+ * Esta clase sirve de intermediario entre el GestorCamarero (que se encuentra en la capa de dominio), y el AgenteBD, que será el que se comunique con
+ * la BD.
+ * 
+ * @author Miguel Ángel Rodríguez Fernández de Simón
+ * @version 0.1.0
+ * @see AgenteBD
+ * @since 0.1.0
+ */
+public class Camarero {
+	
+	private String nombre;
+	private int id;
+	
+	/**
+	 * Constructor vacío para la creación del objeto por parte de GestorCamarero.
+	 */
+<span class="nc" id="L22">	public Camarero() {</span>
+<span class="nc" id="L23">	}</span>
+	
+	/**
+	 * Constructor utilizado para la creación de objetos camareros por parte de la propia clase, para su uso en distintas funcionalidades.
+	 * @param id
+	 * @param nombre
+	 */
+<span class="fc" id="L30">	public Camarero(int id, String nombre) {</span>
+<span class="fc" id="L31">		set_nombre(nombre);</span>
+<span class="fc" id="L32">		set_id(id);</span>
+<span class="fc" id="L33">	}</span>
+	
+	/**
+	 * Este método devuelve una lista con todos los camareros del local (con su id y su nombre).
+	 * @return
+	 * @throws Exception
+	 */
+	public static LinkedList&lt;Camarero&gt; get_lista_camareros() throws Exception{
+<span class="fc" id="L41">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+		String l,g;
+<span class="fc" id="L43">		Camarero camarero = null;</span>
+		//LinkedList&lt;Object&gt; aux = null;
+<span class="fc" id="L45">		LinkedList&lt;Camarero&gt; lista_camareros = new LinkedList&lt;Camarero&gt;();</span>
+<span class="fc" id="L46">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;); //.newInstance</span>
+<span class="fc" id="L47">		LinkedList&lt;Object&gt; vectorADevolver=new LinkedList&lt;Object&gt;();</span>
+<span class="fc" id="L48">		String SQL_Consulta = &quot;SELECT * FROM Camarero;&quot;;</span>
+<span class="fc" id="L49">		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 2);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		for(int i =0;i&lt;vectorADevolver.size();i+=2) {</span>
+<span class="fc" id="L51">			camarero = new Camarero((Integer) vectorADevolver.get(i), (String)vectorADevolver.get(i+1));</span>
+<span class="fc" id="L52">			lista_camareros.add(camarero);</span>
+		}
+<span class="fc" id="L54">		return lista_camareros;</span>
+	}
+	
+	/**
+	 * Este método permite cambiar el nombre de un camarero.
+	 * @param nombre
+	 */
+	public void set_nombre(String nombre) {
+<span class="fc" id="L62">		this.nombre = nombre;</span>
+<span class="fc" id="L63">	}</span>
+	
+	/**
+	 * Este método permite cambiar el id de un camarero.
+	 * @param id
+	 */
+	public void set_id(int id) {
+<span class="fc" id="L70">		this.id = id;</span>
+<span class="fc" id="L71">	}</span>
+	
+	public int get_id() {
+<span class="fc" id="L74">		return id;</span>
+	}
+	public String toString() {
+<span class="nc" id="L77">		return id + &quot; &quot; + nombre;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

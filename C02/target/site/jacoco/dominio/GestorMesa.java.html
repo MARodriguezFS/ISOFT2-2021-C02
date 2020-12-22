@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorMesa.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">GestorMesa.java</span></div><h1>GestorMesa.java</h1><pre class="source lang-java linenums">package dominio;
+
+import java.util.LinkedList;
+
+import persistencia.Mesa;
+
+/**
+ * Esta clase sirve como intermediaria entre GestorJefeSala y los objetos Mesa.
+ * @author Fernando Rodríguez Gallego
+ * @version 0.1.0
+ * @see EstadosMesas, Mesa
+ * @since 0.1.0
+ */
+public class GestorMesa implements EstadosMesas {
+<span class="fc" id="L15">    public GestorMesa() {</span>
+
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * Esta clase crea un objeto mesa y realiza la accion de insertar mesa
+     * @return
+     * @throws Exception
+     */
+    public static boolean nuevaMesa() throws Exception{
+<span class="fc" id="L25">        boolean insertado = false;</span>
+<span class="fc" id="L26">        Mesa m = new Mesa(LIBRE);</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">        if(m.insert() ==1)</span>
+<span class="nc" id="L28">            insertado = true;</span>
+<span class="nc" id="L29">        return insertado;        </span>
+    }
+    /**
+     * Esta clase crea un objeto mesa y realiza la accion de eliminar mesa
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public static boolean eliminarMesa(int id) throws Exception{
+<span class="fc" id="L38">        boolean eliminado = false;</span>
+<span class="fc" id="L39">        Mesa m = new Mesa(id);</span>
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if(m.delete() ==1)</span>
+<span class="nc" id="L41">            eliminado = true;</span>
+<span class="fc" id="L42">        return eliminado;        </span>
+    }
+    /**
+     * Esta clase crea un objeto mesa y realiza la accion de actualizar el estado de la mesa
+     * @param estado
+     * @param idMesa
+     * @return
+     * @throws Exception
+     */
+    public static boolean cambiarEstado(String estado, int idMesa) throws Exception{
+<span class="fc" id="L52">        boolean cambiado = false;</span>
+<span class="fc" id="L53">        Mesa m = new Mesa(idMesa);</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        if(m.cambiarEstado(estado) ==1)</span>
+<span class="fc" id="L55">            cambiado = true;</span>
+<span class="fc" id="L56">        return cambiado;        </span>
+    }
+    /**
+     * Esta clase crea un objeto mesa y realiza la accion de actualizar el camarero asignado a la mesa
+     * @param idCamarero
+     * @param idMesa
+     * @return
+     * @throws Exception
+     */
+    public static boolean asignarCamarero(int idCamarero, int idMesa) throws Exception{
+<span class="fc" id="L66">        boolean cambiado = false;</span>
+<span class="fc" id="L67">        Mesa m = new Mesa(idMesa);</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if(m.cambiarCamarero(idCamarero) ==1)</span>
+<span class="fc" id="L69">            cambiado = true;</span>
+<span class="fc" id="L70">        return cambiado;</span>
+    }
+    /**
+     * Realiza la acción de obtener la lista de mesas y devuelve una lista con todas las mesas
+     * @return
+     * @throws Exception
+     */
+    public static LinkedList&lt;Mesa&gt; getListaMesas() throws Exception{
+<span class="fc" id="L78">        return Mesa.getListaMesas();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
