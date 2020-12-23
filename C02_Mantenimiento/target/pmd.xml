@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.29.0" timestamp="2020-12-23T14:00:20.758">
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\dominio\EstadosMesas.java">
+<violation beginline="11" endline="11" begincolumn="22" endcolumn="44" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'LIBRE': the field is declared in an interface type
+</violation>
+<violation beginline="12" endline="12" begincolumn="22" endcolumn="52" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'RESERVADA': the field is declared in an interface type
+</violation>
+<violation beginline="13" endline="13" begincolumn="22" endcolumn="48" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'OCUPADA': the field is declared in an interface type
+</violation>
+<violation beginline="14" endline="14" begincolumn="22" endcolumn="50" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'PIDIENDO': the field is declared in an interface type
+</violation>
+<violation beginline="15" endline="15" begincolumn="22" endcolumn="69" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'ESPERANDO_COMIDA': the field is declared in an interface type
+</violation>
+<violation beginline="16" endline="16" begincolumn="22" endcolumn="49" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'SERVIDA': the field is declared in an interface type
+</violation>
+<violation beginline="17" endline="17" begincolumn="22" endcolumn="69" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'ESPERANDO_CUENTA': the field is declared in an interface type
+</violation>
+<violation beginline="18" endline="18" begincolumn="22" endcolumn="48" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'PAGANDO': the field is declared in an interface type
+</violation>
+<violation beginline="19" endline="19" begincolumn="22" endcolumn="60" rule="UnnecessaryModifier" ruleset="Code Style" package="dominio" class="EstadosMesas" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'public static final' on field 'PREPARACION': the field is declared in an interface type
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\dominio\GestorCocina.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="28" rule="DuplicateImports" ruleset="Code Style" package="dominio" class="GestorCocina" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#duplicateimports" priority="4">
+Avoid duplicate imports such as 'persistencia.Comanda'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Best Practices" package="dominio" class="GestorCocina" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'persistencia.Ingredientes'
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\dominio\GestorComanda.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="25" rule="UnusedImports" ruleset="Best Practices" package="dominio" class="GestorComanda" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'persistencia.Mesa'
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\oraculo.java">
+<violation beginline="5" endline="5" begincolumn="10" endcolumn="18" rule="UnusedLocalVariable" ruleset="Best Practices" class="oraculo" method="main" variable="descuento" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'descuento'.
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\persistencia\BDConstantes.java">
+<violation beginline="13" endline="13" begincolumn="15" endcolumn="184" rule="UnnecessaryModifier" ruleset="Code Style" package="persistencia" class="BDConstantes" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'CONNECTION_STRING': the field is declared in an interface type
+</violation>
+<violation beginline="14" endline="14" begincolumn="15" endcolumn="35" rule="UnnecessaryModifier" ruleset="Code Style" package="persistencia" class="BDConstantes" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'DBUSER': the field is declared in an interface type
+</violation>
+<violation beginline="15" endline="15" begincolumn="15" endcolumn="45" rule="UnnecessaryModifier" ruleset="Code Style" package="persistencia" class="BDConstantes" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'DBPASS': the field is declared in an interface type
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\persistencia\Comanda.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Best Practices" package="persistencia" class="Comanda" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'java.sql.Timestamp'
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\persistencia\Mesa.java">
+<violation beginline="96" endline="96" begincolumn="22" endcolumn="70" rule="UselessParentheses" ruleset="Code Style" package="persistencia" class="Mesa" method="delete" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="107" endline="107" begincolumn="12" endcolumn="17" rule="UnusedLocalVariable" ruleset="Best Practices" package="persistencia" class="Mesa" method="cambiarEstado" variable="agente" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'agente'.
+</violation>
+<violation beginline="109" endline="109" begincolumn="22" endcolumn="87" rule="UselessParentheses" ruleset="Code Style" package="persistencia" class="Mesa" method="cambiarEstado" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="120" endline="120" begincolumn="12" endcolumn="17" rule="UnusedLocalVariable" ruleset="Best Practices" package="persistencia" class="Mesa" method="cambiarCamarero" variable="agente" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'agente'.
+</violation>
+<violation beginline="122" endline="122" begincolumn="22" endcolumn="95" rule="UselessParentheses" ruleset="Code Style" package="persistencia" class="Mesa" method="cambiarCamarero" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\persistencia\Reserva.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Best Practices" package="persistencia" class="Reserva" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'java.util.Date'
+</violation>
+<violation beginline="79" endline="79" begincolumn="18" endcolumn="23" rule="UnusedLocalVariable" ruleset="Best Practices" package="persistencia" class="Reserva" method="insert" variable="gestor" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'gestor'.
+</violation>
+<violation beginline="87" endline="87" begincolumn="22" endcolumn="82" rule="UselessParentheses" ruleset="Code Style" package="persistencia" class="Reserva" method="delete" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="88" endline="88" begincolumn="18" endcolumn="23" rule="UnusedLocalVariable" ruleset="Best Practices" package="persistencia" class="Reserva" method="delete" variable="gestor" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'gestor'.
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\presentacion\HorasTurnos.java">
+<violation beginline="4" endline="4" begincolumn="15" endcolumn="41" rule="UnnecessaryModifier" ruleset="Code Style" package="presentacion" class="HorasTurnos" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'TURNO1': the field is declared in an interface type
+</violation>
+<violation beginline="5" endline="5" begincolumn="15" endcolumn="41" rule="UnnecessaryModifier" ruleset="Code Style" package="presentacion" class="HorasTurnos" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'TURNO2': the field is declared in an interface type
+</violation>
+<violation beginline="6" endline="6" begincolumn="15" endcolumn="41" rule="UnnecessaryModifier" ruleset="Code Style" package="presentacion" class="HorasTurnos" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'TURNO3': the field is declared in an interface type
+</violation>
+<violation beginline="7" endline="7" begincolumn="15" endcolumn="41" rule="UnnecessaryModifier" ruleset="Code Style" package="presentacion" class="HorasTurnos" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'TURNO4': the field is declared in an interface type
+</violation>
+<violation beginline="8" endline="8" begincolumn="15" endcolumn="41" rule="UnnecessaryModifier" ruleset="Code Style" package="presentacion" class="HorasTurnos" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'TURNO5': the field is declared in an interface type
+</violation>
+<violation beginline="9" endline="9" begincolumn="15" endcolumn="41" rule="UnnecessaryModifier" ruleset="Code Style" package="presentacion" class="HorasTurnos" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifiers 'static final' on field 'TURNO6': the field is declared in an interface type
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\presentacion\IUCancelarReserva.java">
+<violation beginline="49" endline="49" begincolumn="24" endcolumn="38" rule="UnusedLocalVariable" ruleset="Best Practices" package="presentacion" class="IUCancelarReserva" method="initialize" variable="listaReservasBD" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'listaReservasBD'.
+</violation>
+<violation beginline="66" endline="66" begincolumn="26" endcolumn="38" rule="UnusedLocalVariable" ruleset="Best Practices" package="presentacion" class="IUCancelarReserva" method="actionPerformed" variable="listaReservas" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'listaReservas'.
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\presentacion\IUJefeDeSala.java">
+<violation beginline="76" endline="76" begincolumn="21" endcolumn="34" rule="UnusedLocalVariable" ruleset="Best Practices" package="presentacion" class="IUJefeDeSala" method="initialize" variable="lista_mesas_BD" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'lista_mesas_BD'.
+</violation>
+<violation beginline="144" endline="144" begincolumn="23" endcolumn="36" rule="UnusedLocalVariable" ruleset="Best Practices" package="presentacion" class="IUJefeDeSala" method="actionPerformed" variable="lista_mesas_BD" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'lista_mesas_BD'.
+</violation>
+<violation beginline="162" endline="162" begincolumn="24" endcolumn="40" rule="UnusedLocalVariable" ruleset="Best Practices" package="presentacion" class="IUJefeDeSala" method="actionPerformed" variable="iuCancelarReserva" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'iuCancelarReserva'.
+</violation>
+<violation beginline="181" endline="181" begincolumn="23" endcolumn="36" rule="UnusedLocalVariable" ruleset="Best Practices" package="presentacion" class="IUJefeDeSala" method="actionPerformed" variable="lista_mesas_BD" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'lista_mesas_BD'.
+</violation>
+</file>
+<file name="C:\Users\jsant\eclipse-workspace\C02\src\main\java\presentacion\IU_Cocina.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="29" rule="UnusedImports" ruleset="Best Practices" package="presentacion" class="IU_Cocina" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'java.awt.BorderLayout'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Best Practices" package="presentacion" class="IU_Cocina" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'java.awt.FlowLayout'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Best Practices" package="presentacion" class="IU_Cocina" externalInfoUrl="https://pmd.github.io/pmd-6.29.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+Avoid unused imports such as 'java.awt.GridLayout'
+</violation>
+</file>
+</pmd>

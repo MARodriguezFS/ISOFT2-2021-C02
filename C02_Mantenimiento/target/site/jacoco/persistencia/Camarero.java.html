@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Camarero.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">persistencia</a> &gt; <span class="el_source">Camarero.java</span></div><h1>Camarero.java</h1><pre class="source lang-java linenums">package persistencia;
+
+import java.util.LinkedList;
+
+/**
+ * Esta clase sirve de intermediario entre el GestorCamarero (que se encuentra en la capa de dominio), y el AgenteBD, que sera el que se comunique con
+ * la BD.
+ * 
+ * @author Miguel Angel RodrÃ­guez Fernandez de Simon
+ * @version 0.1.0
+ * @see &quot;AgenteBD&quot;
+ * @since 0.1.0
+ */
+public class Camarero {
+	
+	private String nombre;
+	private int id;
+	
+	/**
+	 * Constructor vacio para la creacion del objeto por parte de GestorCamarero.
+	 */
+<span class="nc" id="L22">	public Camarero() {</span>
+<span class="nc" id="L23">	}</span>
+	
+	/**
+	 * Constructor utilizado para la creacion de objetos camareros por parte de la propia clase, para su uso en distintas funcionalidades.
+	 * @param &quot;id&quot; es el primer atributo del contructor, el id del camarero.
+	 * @param &quot;nombre&quot; es el segundo atributo del constructor, el nombre del camarero.
+	 */
+<span class="fc" id="L30">	public Camarero(int id, String nombre) {</span>
+<span class="fc" id="L31">		set_nombre(nombre);</span>
+<span class="fc" id="L32">		set_id(id);</span>
+<span class="fc" id="L33">	}</span>
+
+	/**
+	 * Este metodo devuelve una lista con todos los camareros del local (con su id y su nombre).
+	 * @return devuelve una lista de camareros
+	 * @throws en caso de no hacer bien la operacion se devuelve el fallo
+	 */
+	public static LinkedList&lt;Camarero&gt; get_lista_camareros() throws Exception{
+<span class="fc" id="L41">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+<span class="fc" id="L42">		Camarero camarero = null;</span>
+		//LinkedList&lt;Object&gt; aux = null;
+<span class="fc" id="L44">		LinkedList&lt;Camarero&gt; lista_camareros = new LinkedList&lt;Camarero&gt;();</span>
+<span class="fc" id="L45">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;); //.newInstance</span>
+<span class="fc" id="L46">		LinkedList&lt;Object&gt; vectorADevolver=new LinkedList&lt;Object&gt;();</span>
+<span class="fc" id="L47">		String SQL_Consulta = &quot;SELECT * FROM Camarero;&quot;;</span>
+<span class="fc" id="L48">		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 2);</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		for(int i =0;i&lt;vectorADevolver.size();i+=2) {</span>
+<span class="fc" id="L50">		camarero = new Camarero((Integer) vectorADevolver.get(i), (String)vectorADevolver.get(i+1));</span>
+<span class="fc" id="L51">		lista_camareros.add(camarero);</span>
+		}
+<span class="fc" id="L53">		return lista_camareros;</span>
+		}
+	
+	/**
+	 * Este metodo permite cambiar el nombre de un camarero.
+	 * @param &quot;nombre&quot; el unico parametro de este metodo es el nombre del camarero
+	 */
+	public void set_nombre(String nombre) {
+<span class="fc" id="L61">		this.nombre = nombre;</span>
+<span class="fc" id="L62">	}</span>
+	
+	/**
+	 * Este metodo permite cambiar el id de un camarero.
+	 * @param &quot;id&quot; el unico paramatreo de este metodo es el id del camarero.
+	 */
+	public void set_id(int id) {
+<span class="fc" id="L69">		this.id = id;</span>
+<span class="fc" id="L70">	}</span>
+	
+	public int get_id() {
+<span class="fc" id="L73">		return id;</span>
+	}
+	public String toString() {
+<span class="nc" id="L76">		return id + &quot; &quot; + nombre;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

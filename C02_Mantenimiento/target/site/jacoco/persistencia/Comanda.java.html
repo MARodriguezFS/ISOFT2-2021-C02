@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Comanda.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">persistencia</a> &gt; <span class="el_source">Comanda.java</span></div><h1>Comanda.java</h1><pre class="source lang-java linenums">package persistencia;
+
+import java.sql.Timestamp;
+import java.util.LinkedList;
+
+/**
+ * Esta clase seria la clase DAO y sirve como intermediario entre el agente y la clase GestorComanda
+ * @author Alejandro Ruiz Aranda y Jesus Santiyan Reviriego
+ * @version 0.1.0
+ * @see &quot;Comanda&quot;
+ * @since 0.1.0
+ */
+
+public class Comanda {
+	private int primero;
+	private int segundo;
+	private int postre;
+	private int bebida;
+	private int entrantes;
+	private int idComanda;
+	private int idCamarero;
+	private int idMesa;
+	
+<span class="fc" id="L24">	public Comanda(int idComanda, int primero, int segundo, int postre, int bebida, int entrantes, int idCamarero, int idMesa) {</span>
+<span class="fc" id="L25">		setIdComanda(idComanda);</span>
+<span class="fc" id="L26">		setPrimero(primero);</span>
+<span class="fc" id="L27">		setSegundo(segundo);</span>
+<span class="fc" id="L28">		setPostre(postre);</span>
+<span class="fc" id="L29">		setBebida(bebida);</span>
+<span class="fc" id="L30">		setEntrantes(entrantes);</span>
+<span class="fc" id="L31">		setIdCamarero(idCamarero);</span>
+<span class="fc" id="L32">		setIdMesa(idMesa);</span>
+<span class="fc" id="L33">	}</span>
+	
+<span class="fc" id="L35">	public Comanda(int idComanda) {</span>
+<span class="fc" id="L36">		setIdComanda(idComanda);</span>
+<span class="fc" id="L37">	}</span>
+	
+	/**
+	 * Inserta una comanda en la base de datos
+	 * @return devuelve un int 0 o 1 segun se haga la operacion
+	 * @throws devuelve el fallo correspondiente en caso de fallar la operacion
+	 */
+
+	public int insert() throws Exception {
+<span class="fc" id="L46">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+<span class="fc" id="L47">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="fc" id="L48">		String consulta = &quot;INSERT INTO Comanda (idComanda,primero,segundo,postre,bebida,entrante,idCamarero,idMesa) VALUES('&quot;+this.idComanda+&quot;','&quot; +this.primero+&quot;','&quot;+this.segundo+&quot;','&quot;+this.postre+&quot;','&quot;+this.bebida+&quot;','&quot;+this.entrantes+&quot;','&quot;+this.idCamarero+&quot;','&quot;+this.idMesa+&quot;')&quot;;</span>
+<span class="nc" id="L49">		int res = agente.insert(consulta);</span>
+<span class="nc" id="L50">		return res;</span>
+	}
+	
+	public static LinkedList&lt;Comanda&gt; getListaComandas() throws Exception{
+<span class="fc" id="L54">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+<span class="fc" id="L55">		Comanda comanda = null;</span>
+<span class="fc" id="L56">		LinkedList&lt;Comanda&gt; listaComandas = new LinkedList&lt;Comanda&gt;();</span>
+<span class="fc" id="L57">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="fc" id="L58">		LinkedList&lt;Object&gt; vectorADevolver=new LinkedList&lt;Object&gt;();</span>
+<span class="fc" id="L59">		String SQL_Consulta = &quot;SELECT * FROM Comanda;&quot;;</span>
+<span class="fc" id="L60">		vectorADevolver = agente.read(SQL_Consulta,vectorADevolver, 8);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		for(int i =0;i&lt;vectorADevolver.size();i+=8) {</span>
+<span class="fc" id="L62">			comanda = new Comanda((Integer) vectorADevolver.get(i), (Integer) vectorADevolver.get(i+1),(Integer) vectorADevolver.get(i+2),</span>
+<span class="fc" id="L63">					(Integer) vectorADevolver.get(i+3),(Integer) vectorADevolver.get(i+4),(Integer) vectorADevolver.get(i+5),(Integer) vectorADevolver.get(i+6), (Integer) vectorADevolver.get(i+7));</span>
+<span class="fc" id="L64">			listaComandas.add(comanda);</span>
+		}
+<span class="fc" id="L66">		return listaComandas;</span>
+	}
+	
+	public double cuenta() throws Exception{
+<span class="fc" id="L70">		double cuenta = 0;</span>
+<span class="fc" id="L71">		AgenteBD agente = AgenteBD.getSingletonInstance();</span>
+<span class="fc" id="L72">		Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span>
+<span class="fc" id="L73">		LinkedList&lt;Object&gt; vectorADevolver = new LinkedList&lt;Object&gt;();</span>
+<span class="fc" id="L74">		String precioBebida = &quot;SELECT precio FROM Bebida WHERE idBebida=(SELECT bebida FROM Comanda WHERE idComanda=&quot;+this.idComanda+&quot;);&quot;;</span>
+<span class="fc" id="L75">		vectorADevolver = agente.read(precioBebida,vectorADevolver,1);</span>
+<span class="fc" id="L76">		String precioPrimero = &quot;SELECT precio FROM Comida WHERE idComida=(SELECT primero FROM Comanda WHERE idComanda=&quot;+this.idComanda+&quot;);&quot;;</span>
+<span class="fc" id="L77">		vectorADevolver = agente.read(precioPrimero,vectorADevolver,1);</span>
+<span class="fc" id="L78">		String precioSegundo = &quot;SELECT precio FROM Comida WHERE idComida=(SELECT segundo FROM Comanda WHERE idComanda=&quot;+this.idComanda+&quot;);&quot;;</span>
+<span class="fc" id="L79">		vectorADevolver = agente.read(precioSegundo,vectorADevolver,1);</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">		for(int i = 0; i &lt; vectorADevolver.size(); i+=3) {</span>
+<span class="fc" id="L81">			cuenta = (Double) vectorADevolver.get(i) + (Double) vectorADevolver.get(i+1) + (Double) vectorADevolver.get(i+2);</span>
+		}
+<span class="fc" id="L83">		return cuenta;</span>
+	}
+	
+	public int getIdCamarero() {
+<span class="nc" id="L87">		return idCamarero;</span>
+	}
+
+	public void setIdCamarero(int idCamarero) {
+<span class="fc" id="L91">		this.idCamarero = idCamarero;</span>
+<span class="fc" id="L92">	}</span>
+
+	public int getIdMesa() {
+<span class="nc" id="L95">		return idMesa;</span>
+	}
+
+	public void setIdMesa(int idMesa) {
+<span class="fc" id="L99">		this.idMesa = idMesa;</span>
+<span class="fc" id="L100">	}</span>
+
+	public int getPrimero() {
+<span class="fc" id="L103">		return primero;</span>
+	}
+
+	public void setPrimero(int primero) {
+<span class="fc" id="L107">		this.primero = primero;</span>
+<span class="fc" id="L108">	}</span>
+
+	public int getSegundo() {
+<span class="fc" id="L111">		return segundo;</span>
+	}
+
+	public void setSegundo(int segundo) {
+<span class="fc" id="L115">		this.segundo = segundo;</span>
+<span class="fc" id="L116">	}</span>
+
+	public int getPostre() {
+<span class="fc" id="L119">		return postre;</span>
+	}
+
+	public void setPostre(int postre) {
+<span class="fc" id="L123">		this.postre = postre;</span>
+<span class="fc" id="L124">	}</span>
+
+	public int getBebida() {
+<span class="fc" id="L127">		return bebida;</span>
+	}
+
+	public void setBebida(int bebida) {
+<span class="fc" id="L131">		this.bebida = bebida;</span>
+<span class="fc" id="L132">	}</span>
+
+	public int getEntrantes() {
+<span class="fc" id="L135">		return entrantes;</span>
+	}
+
+	public void setEntrantes(int entrantes) {
+<span class="fc" id="L139">		this.entrantes = entrantes;</span>
+<span class="fc" id="L140">	}</span>
+
+	public int getIdComanda() {
+<span class="nc" id="L143">		return idComanda;</span>
+	}
+
+	public void setIdComanda(int idComanda) {
+<span class="fc" id="L147">		this.idComanda = idComanda;</span>
+<span class="fc" id="L148">	}</span>
+	
+	@Override
+	public String toString() {
+<span class="nc" id="L152">		return &quot;Comanda: &quot; + idComanda + &quot;, primero: &quot; + primero + &quot;, segundo: &quot; + segundo + &quot;, postre: &quot; + postre + &quot; bebida: &quot; + bebida </span>
+				+ &quot; entrantes: &quot; + entrantes + &quot; camarero: &quot; + idCamarero + &quot; mesa: &quot; + idMesa;
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

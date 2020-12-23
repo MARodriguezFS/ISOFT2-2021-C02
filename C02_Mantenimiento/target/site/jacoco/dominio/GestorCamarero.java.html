@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestorCamarero.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">dominio</a> &gt; <span class="el_source">GestorCamarero.java</span></div><h1>GestorCamarero.java</h1><pre class="source lang-java linenums">package dominio;
+import persistencia.Camarero;
+
+import java.util.LinkedList;
+
+/**
+ * Esta clase utiliza la clase Camarero para poder realizar sus funcionalidades.
+ * 
+ * @author Miguel Angel Rodriguez Fernandez de Simon
+ * @version 0.1.0
+ * @see &quot;Camarero, EstadoMesas, CrearComanda&quot;
+ * @since 0.1.0
+ */
+
+public class GestorCamarero implements EstadosMesas{
+	
+	/**
+	 * Constructor vacÃ­o para utilizar el gestor.
+	 */
+<span class="fc" id="L20">	public GestorCamarero() {</span>
+<span class="fc" id="L21">	}</span>
+	
+	/**
+	 * Este metodo devuelve una lista con todos los camareros.
+	 * @return devuelve una lista de camareros
+	 * @throws en caso de no funcinar devuelve una excepcion con el fallo
+	 */
+	public static LinkedList&lt;Camarero&gt; get_lista_camareros() throws Exception{
+<span class="fc" id="L29">		return Camarero.get_lista_camareros();</span>
+	}
+	
+	public static boolean crearComanda(int idComanda, int primero, int segundo, int postre, int bebida, int entrantes, int idCamarero, int idMesa) throws Exception{
+<span class="fc" id="L33">		boolean creada = false;</span>
+<span class="nc" id="L34">		creada = GestorComanda.crearComanda(idComanda, primero, segundo, postre, bebida, entrantes, idCamarero, idMesa);</span>
+<span class="nc" id="L35">		return creada;</span>
+	}
+	
+	public static boolean cambiarEstado(String estado, int idMesa) throws Exception{
+<span class="fc" id="L39">		boolean cambio = false;</span>
+<span class="fc" id="L40">		cambio = GestorMesa.cambiarEstado(estado, idMesa);</span>
+<span class="fc" id="L41">		return cambio;</span>
+	}
+	
+	public static boolean prepararMesa(int idMesa) throws Exception{
+<span class="fc" id="L45">		boolean cambio = false;</span>
+<span class="fc" id="L46">		cambio = GestorMesa.cambiarEstado(&quot;En preparacion&quot;, idMesa);</span>
+<span class="fc" id="L47">		return cambio;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

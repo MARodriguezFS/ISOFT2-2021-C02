@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IU_CamareroBarra.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">C02</a> &gt; <a href="index.source.html" class="el_package">presentacion</a> &gt; <span class="el_source">IU_CamareroBarra.java</span></div><h1>IU_CamareroBarra.java</h1><pre class="source lang-java linenums">package presentacion;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+
+public class IU_CamareroBarra {
+
+	private JFrame frame;
+	private JTextField txtComanda;
+	private JTextField txtEstadoComanda;
+
+	/**
+	 * Launch the application.
+	 * @Param el unico parametro es un string
+	 */
+	public static void main(String[] args) {
+<span class="fc" id="L22">		EventQueue.invokeLater(new Runnable() {</span>
+			public void run() {
+				try {
+<span class="fc" id="L25">					IU_CamareroBarra window = new IU_CamareroBarra();</span>
+<span class="fc" id="L26">					window.frame.setVisible(true);</span>
+<span class="nc" id="L27">				} catch (Exception e) {</span>
+<span class="nc" id="L28">					e.printStackTrace();</span>
+<span class="fc" id="L29">				}</span>
+<span class="fc" id="L30">			}</span>
+		});
+<span class="fc" id="L32">	}</span>
+
+	/**
+	 * Create the application.
+	 */
+<span class="fc" id="L37">	public IU_CamareroBarra() {</span>
+<span class="fc" id="L38">		initialize();</span>
+<span class="fc" id="L39">	}</span>
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+<span class="fc" id="L45">		frame = new JFrame();</span>
+<span class="fc" id="L46">		frame.setBounds(100, 100, 523, 394);</span>
+<span class="fc" id="L47">		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L48">		frame.getContentPane().setLayout(null);</span>
+		
+<span class="fc" id="L50">		JLabel lblComandas = new JLabel(&quot;COMANDAS:&quot;);</span>
+<span class="fc" id="L51">		lblComandas.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 18));</span>
+<span class="fc" id="L52">		lblComandas.setBounds(50, 50, 180, 32);</span>
+<span class="fc" id="L53">		frame.getContentPane().add(lblComandas);</span>
+		
+<span class="fc" id="L55">		txtComanda = new JTextField();</span>
+<span class="fc" id="L56">		txtComanda.setColumns(10);</span>
+<span class="fc" id="L57">		txtComanda.setBounds(50, 93, 156, 131);</span>
+<span class="fc" id="L58">		frame.getContentPane().add(txtComanda);</span>
+		
+<span class="fc" id="L60">		JLabel lblEstadoComanda = new JLabel(&quot;ESTADO COMANDA:&quot;);</span>
+<span class="fc" id="L61">		lblEstadoComanda.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 18));</span>
+<span class="fc" id="L62">		lblEstadoComanda.setBounds(283, 50, 180, 32);</span>
+<span class="fc" id="L63">		frame.getContentPane().add(lblEstadoComanda);</span>
+		
+<span class="fc" id="L65">		txtEstadoComanda = new JTextField();</span>
+<span class="fc" id="L66">		txtEstadoComanda.setColumns(10);</span>
+<span class="fc" id="L67">		txtEstadoComanda.setBounds(301, 93, 129, 31);</span>
+<span class="fc" id="L68">		frame.getContentPane().add(txtEstadoComanda);</span>
+		
+<span class="fc" id="L70">		JRadioButton rdbtnAvisarACamarero = new JRadioButton(&quot;Avisar Camarero&quot;);</span>
+<span class="fc" id="L71">		rdbtnAvisarACamarero.setFont(new Font(&quot;Tahoma&quot;, Font.PLAIN, 18));</span>
+<span class="fc" id="L72">		rdbtnAvisarACamarero.setBounds(180, 239, 250, 64);</span>
+<span class="fc" id="L73">		frame.getContentPane().add(rdbtnAvisarACamarero);</span>
+<span class="fc" id="L74">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

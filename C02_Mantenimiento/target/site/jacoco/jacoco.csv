@@ -1,0 +1,35 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+C02,default,oraculo,30,0,8,0,10,0,6,0,2,0
+C02,dominio,GestorComidas,10,38,5,5,0,11,5,3,0,3
+C02,dominio,GestorJefeSala,0,35,2,2,0,12,2,3,0,3
+C02,dominio,GestorCocina,0,20,0,0,0,4,0,2,0,2
+C02,dominio,GestorCamarero,12,23,0,0,2,10,0,5,0,5
+C02,dominio,GestorComanda,23,16,2,0,9,3,3,2,2,2
+C02,dominio,GestorMesa,10,57,5,3,4,19,4,6,0,6
+C02,dominio,GestorReservas,10,28,3,1,4,9,2,4,0,4
+C02,presentacion,IUCancelarReserva.new ActionListener() {...},28,9,0,0,9,1,1,1,1,1
+C02,presentacion,IU_Camarero.new ActionListener() {...},17,6,0,0,7,1,1,1,1,1
+C02,presentacion,IU_Camarero,0,106,0,0,0,23,0,3,0,3
+C02,presentacion,IUCancelarReserva,3,107,0,0,2,23,0,2,0,2
+C02,presentacion,IU_Camarero.new Runnable() {...},3,13,0,0,2,5,0,2,0,2
+C02,presentacion,IUConectar.new MouseAdapter() {...},17,6,0,0,7,1,1,1,1,1
+C02,presentacion,IUConectar.new Runnable() {...},3,13,0,0,2,5,0,2,0,2
+C02,presentacion,IU_Cocina.new Runnable() {...},3,13,0,0,2,5,0,2,0,2
+C02,presentacion,IU_Cocina.new ActionListener() {...},1,6,0,0,1,1,1,1,1,1
+C02,presentacion,IUConectar.new ActionListener() {...},1,6,0,0,1,1,1,1,1,1
+C02,presentacion,IUConectar,0,111,0,0,0,21,0,3,0,3
+C02,presentacion,VentanaComanda.new Runnable() {...},9,7,0,0,5,2,0,2,0,2
+C02,presentacion,VentanaComanda,5,393,0,0,2,77,1,3,1,3
+C02,presentacion,IU_CamareroBarra.new Runnable() {...},3,13,0,0,2,5,0,2,0,2
+C02,presentacion,IUJefeDeSala,6,420,0,12,4,77,0,9,0,3
+C02,presentacion,IUJefeDeSala.new ActionListener() {...},34,9,0,0,9,1,1,1,1,1
+C02,presentacion,IUJefeDeSala.new ActionListener() {...},9,6,0,0,5,1,1,1,1,1
+C02,presentacion,IU_CamareroBarra,0,153,0,0,0,30,0,3,0,3
+C02,presentacion,IUJefeDeSala.new ActionListener() {...},88,9,0,0,15,1,1,1,1,1
+C02,presentacion,IU_Cocina,0,160,0,0,0,31,0,3,0,3
+C02,persistencia,Ingredientes,45,103,0,2,12,26,6,9,6,8
+C02,persistencia,Reserva,43,226,0,2,4,52,2,12,2,11
+C02,persistencia,Mesa,37,189,0,2,7,46,4,12,4,11
+C02,persistencia,AgenteBD,15,91,0,6,7,28,3,9,3,6
+C02,persistencia,Camarero,16,73,0,2,3,20,2,6,2,5
+C02,persistencia,Comanda,61,328,0,4,6,62,4,20,4,18
